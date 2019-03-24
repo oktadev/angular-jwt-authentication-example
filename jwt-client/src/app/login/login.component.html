@@ -1,0 +1,22 @@
+<div class="grid-container">
+  <div class="grid-x">
+    <div class="small-12 medium-10 medium-offset-1 large-8 large-offset-2 cell">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h2>Log In</h2>
+        <p>Please login to continue</p>
+        <label class="full-width-input">
+          Email
+          <input type="text" placeholder="Email" formControlName="email" required>
+        </label>
+        <label class="full-width-input">
+          Password
+          <input type="password" placeholder="Password" formControlName="password" required>
+        </label>
+        <button class="button">Login</button>
+      </form>
+      <div class="register-link">
+        Not yet registered? <a routerLink="/register">Register Now</a>
+      </div>
+    </div>
+  </div>
+</div>
