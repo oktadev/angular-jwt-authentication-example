@@ -1,5 +1,5 @@
 const express = require('express');
-const jwt = require('jsonwebtoken');
+const nJwt = require('njwt');
 const bcrypt = require('bcryptjs');
 const sqlite3 = require('sqlite3').verbose();
 
@@ -34,16 +34,14 @@ router.post('/login', function(req, res) {
     var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
     if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
 
-    console.log('Generating token', user.id);
-    var token = jwt.sign({ id: user.id }, config.secret, {
-      expiresIn: 86400
-    });
+    var jwt = nJwt.create({ id: user.id }, config.secret);
+    jwt.setExpiration(new Date().getTime() + (24*60*60*1000));
 
-    res.status(200).send({ auth: true, token: token });
+    res.status(200).send({ auth: true, token: jwt.compact() });
   });
 });
 
-router.get('/me', jwtAuth, function(req, res, next) {
+router.get('/profile', jwtAuth, function(req, res, next) {
   console.log('ME', req.userId);
   db.get("SELECT id, name, email FROM users WHERE id=?", req.userId, function (err, user) {
     if (err) return res.status(500).send("There was a problem finding the user.");

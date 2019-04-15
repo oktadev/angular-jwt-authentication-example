@@ -22,9 +22,9 @@ import { ProfileComponent } from './profile/profile.component';
     FormsModule,
     ReactiveFormsModule,
     OktaAuthModule.initAuth({
-      issuer: 'https://dev-322018.oktapreview.com/oauth2/default',
+      issuer: 'https://.oktapreview.com/oauth2/default',
       redirectUri: 'http://localhost:4200/implicit/callback',
-      clientId: '0oaipoqa789EAewTL0h7'
+      clientId: ''
     }),
   ],
   providers: [],
