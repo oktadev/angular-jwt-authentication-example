@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
 import { BehaviorSubject } from 'rxjs';
 
@@ -7,11 +7,11 @@ import { BehaviorSubject } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'okta-client';
   isLoggedIn = new BehaviorSubject<boolean>(false);
 
-  constructor (public oktaAuth: OktaAuthService) {
+  constructor(public oktaAuth: OktaAuthService) {
     this.oktaAuth.$authenticationState.subscribe(this.isLoggedIn);
   }
 

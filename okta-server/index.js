@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const bearerToken = require('express-bearer-token');
 const profile = require('./profile');
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 10101;
 
 const app = express()
   .use(cors())

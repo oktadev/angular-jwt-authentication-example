@@ -9,6 +9,7 @@ import { ServerService } from '../server.service';
 export class ProfileComponent implements OnInit {
   name: string;
   email: string;
+
   constructor(private server: ServerService) { }
 
   ngOnInit() {
