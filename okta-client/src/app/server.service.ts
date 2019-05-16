@@ -10,17 +10,20 @@ const baseUrl = 'http://localhost:10101';
 })
 export class ServerService {
 
-  constructor(public oktaAuth: OktaAuthService, private http: HttpClient) {}
+  constructor(public oktaAuth: OktaAuthService, private http: HttpClient) {
+  }
 
   request(method: string, route: string, data?: any) {
-    if (method==='GET') return this.get(route, data);
+    if (method === 'GET') {
+      return this.get(route, data);
+    }
 
     const subject = new Subject<any>();
 
     this.oktaAuth.getAccessToken().then((token) => {
-      const header = (token) ? { Authorization: `Bearer ${token}` } : undefined;
+      const header = (token) ? {Authorization: `Bearer ${token}`} : undefined;
 
-      const request = this.http.request(method, baseUrl+route, {
+      const request = this.http.request(method, baseUrl + route, {
         body: data,
         responseType: 'json',
         observe: 'body',
@@ -37,7 +40,7 @@ export class ServerService {
     const subject = new Subject<any>();
 
     this.oktaAuth.getAccessToken().then((token) => {
-      const header = (token) ? { Authorization: `Bearer ${token}` } : undefined;
+      const header = (token) ? {Authorization: `Bearer ${token}`} : undefined;
 
       let params = new HttpParams();
       if (data !== undefined) {
@@ -46,10 +49,10 @@ export class ServerService {
         });
       }
 
-      const request = this.http.get(baseUrl+route, {
+      const request = this.http.get(baseUrl + route, {
         responseType: 'json',
         headers: header,
-        params: params
+        params
       });
 
       request.subscribe(subject);

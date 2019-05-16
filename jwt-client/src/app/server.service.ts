@@ -33,9 +33,7 @@ export class ServerService {
   }
 
   get(route: string, data?: any) {
-    const header = (this.loggedIn)
-      ? { Authorization: `Bearer ${this.token}` }
-      : undefined;
+    const header = (this.loggedIn) ? { Authorization: `Bearer ${this.token}` } : undefined;
 
     let params = new HttpParams();
     if (data !== undefined) {

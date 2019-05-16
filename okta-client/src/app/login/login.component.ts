@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     // Show the widget when prompted, otherwise remove it from the DOM.
     router.events.forEach(event => {
       if (event instanceof NavigationStart) {
-        switch(event.url) {
+        switch (event.url) {
           case '/login':
           case '/profile':
             break;

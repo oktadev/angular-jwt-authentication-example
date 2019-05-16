@@ -14,7 +14,7 @@ const oktaConfig = {
   redirectUri: 'http://localhost:4200/implicit/callback',
   clientId: '0oaljmh2zKzsjYv3o356',
   scope: 'openid profile'
-}
+};
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ const oktaConfig = {
     ReactiveFormsModule,
     OktaAuthModule
   ],
-  providers: [{ provide: OKTA_CONFIG, useValue: oktaConfig }],
+  providers: [{provide: OKTA_CONFIG, useValue: oktaConfig}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
