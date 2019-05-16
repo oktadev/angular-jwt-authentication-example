@@ -18,7 +18,7 @@ import * as OktaSignIn from '@okta/okta-signin-widget';
 })
 export class LoginComponent implements OnInit {
   widget = new OktaSignIn({
-    baseUrl: 'https://dev-322018.oktapreview.com'
+    baseUrl: 'https://dev-133320.okta.com'
   });
 
   constructor(private oktaAuth: OktaAuthService, router: Router) {

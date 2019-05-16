@@ -12,13 +12,12 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   public loginInvalid: boolean;
   private formSubmitAttempt: boolean;
-  private returnUrl: string;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -34,9 +33,7 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       try {
         await this.authService.login(this.form.value);
-        this.router.navigateByUrl('/me');
-      }
-      catch (err) {
+      } catch (err) {
         this.loginInvalid = true;
       }
     } else {

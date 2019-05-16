@@ -27,7 +27,11 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     console.log('Submitting');
-    if (!this.form.valid) return;
+    if (!this.form.valid) {
+      console.log('Form not valid. Please check that fields are correctly filled in');
+      return;
+    }
+
     console.log('Form valid');
     const request = this.server.request('POST', '/register', {
       email: this.form.get('email').value,

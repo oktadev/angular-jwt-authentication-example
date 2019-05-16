@@ -3,25 +3,22 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { OktaAuthService } from '@okta/okta-angular';
 import { Subject } from 'rxjs';
 
-const baseUrl = 'http://localhost:8080';
+const baseUrl = 'http://localhost:10101';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServerService {
 
-  constructor(public oktaAuth: OktaAuthService,
-              private http: HttpClient) {}
+  constructor(public oktaAuth: OktaAuthService, private http: HttpClient) {}
 
   request(method: string, route: string, data?: any) {
     if (method==='GET') return this.get(route, data);
 
     const subject = new Subject<any>();
 
-    const token = this.oktaAuth.getAccessToken().then((token) => {;
-      const header = (token)
-        ?{ Authorization: `Bearer ${token}` }
-        :undefined;
+    this.oktaAuth.getAccessToken().then((token) => {
+      const header = (token) ? { Authorization: `Bearer ${token}` } : undefined;
 
       const request = this.http.request(method, baseUrl+route, {
         body: data,
@@ -39,13 +36,11 @@ export class ServerService {
   get(route: string, data?: any) {
     const subject = new Subject<any>();
 
-    const token = this.oktaAuth.getAccessToken().then((token) => {;
-      const header = (token)
-        ?{ Authorization: `Bearer ${token}` }
-        :undefined;
+    this.oktaAuth.getAccessToken().then((token) => {
+      const header = (token) ? { Authorization: `Bearer ${token}` } : undefined;
 
       let params = new HttpParams();
-      if (data!==undefined) {
+      if (data !== undefined) {
         Object.getOwnPropertyNames(data).forEach(key => {
           params = params.set(key, data[key]);
         });

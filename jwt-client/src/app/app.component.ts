@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'okta-jwt-client-blueprint';
+  title = 'jwt-client';
 
   constructor(private authService: AuthService) {}
 
