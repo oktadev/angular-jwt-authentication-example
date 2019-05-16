@@ -1,6 +1,6 @@
 # Angular Authentication with JWT
  
-This example app shows how to build a JWT authentication with Node.js and Angular. It also shows how you can simplify basic CRUD app with Spring Boot 2.2, Spring Data, Angular 8, and Angular Material.
+This example app shows how to build a JWT authentication with Node.js and Angular. It also shows how you can simplify JWT authentication by using Okta.
 
 Please read [Angular Authentication with JWT](https://developer.okta.com/blog/2019/05/16/angular-authentication-jwt) to see how this app was created.
 
