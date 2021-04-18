@@ -11,9 +11,9 @@ import { ProfileComponent } from './profile/profile.component';
 
 const oktaConfig = {
   issuer: 'https://dev-133320.okta.com/oauth2/default',
-  redirectUri: 'http://localhost:4200/implicit/callback',
+  redirectUri: 'http://localhost:4200/callback',
   clientId: '0oaljmh2zKzsjYv3o356',
-  scope: 'openid profile'
+  scopes: ['openid', 'profile']
 };
 
 @NgModule({

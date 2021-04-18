@@ -10,7 +10,7 @@ function oktaAuth(req, res, next) {
     return res.status(403).send({ auth: false, message: 'No token provided' });
   }
 
-  oktaJwtVerifier.verifyAccessToken(req.token).then(function(jwt) {
+  oktaJwtVerifier.verifyAccessToken(req.token, 'api://default').then(function(jwt) {
     req.userId = jwt.claims.uid;
     req.userEmail = jwt.claims.sub;
     next();

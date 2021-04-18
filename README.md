@@ -4,7 +4,7 @@ This example app shows how to build a JWT authentication with Node.js and Angula
 
 Please read [Angular Authentication with JWT](https://developer.okta.com/blog/2019/05/16/angular-authentication-jwt) to see how this app was created.
 
-**Prerequisites:** [Java 11](https://sdkman.io/sdks#java) and [Node.js](https://nodejs.org/). 
+**Prerequisites:** [Node.js](https://nodejs.org/). 
 
 > [Okta](https://developer.okta.com/) has Authentication and User Management APIs that reduce development time with instant-on, scalable user infrastructure. Okta's intuitive API and expert support make it easy for developers to authenticate, manage and secure users and roles in any application.
 
@@ -63,7 +63,7 @@ For the client, set the `issuer` and copy the `clientId` into `okta-client/src/a
 ```typescript
 const oktaConfig = {
   issuer: 'https://{yourOktaDomain}/oauth2/default',
-  redirectUri: 'http://localhost:4200/implicit/callback',
+  redirectUri: 'http://localhost:4200/callback',
   clientId: '{yourClientId}',
   scope: 'openid profile'
 }
@@ -75,7 +75,7 @@ Run `npm install` followed by `npm start` in the `okta-server` and `okta-client`
 
 This example uses the following open source libraries from Okta:
 
-* [Okta Angular SDK](https://github.com/okta/okta-oidc-js/tree/master/packages/okta-angular#readme)
+* [Okta Angular SDK](https://github.com/okta/okta-angular#readme)
 * [Okta JWT Verifier for Node.js](https://github.com/okta/okta-oidc-js/tree/master/packages/jwt-verifier#readme)
 
 ## Help

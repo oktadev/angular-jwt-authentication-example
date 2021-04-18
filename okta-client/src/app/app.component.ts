@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     this.oktaAuth.isAuthenticated().then((auth) => {this.isLoggedIn.next(auth)});
   }
 
-  onLogout() {
-    this.oktaAuth.logout('/');
+  async onLogout() {
+    await this.oktaAuth.signOut();
   }
 }

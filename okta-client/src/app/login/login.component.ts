@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       el: '#okta-signin-container'},
       (res) => {
         if (res.status === 'SUCCESS') {
-          this.oktaAuth.loginRedirect('/profile', { sessionToken: res.session.token });
+          this.oktaAuth.signInWithRedirect({originalUri: '/profile'});
           // Hide the widget
           this.widget.hide();
         }
