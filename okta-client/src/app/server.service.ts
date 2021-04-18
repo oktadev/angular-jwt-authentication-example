@@ -19,9 +19,10 @@ export class ServerService {
     }
 
     const subject = new Subject<any>();
+    const token = this.oktaAuth.getAccessToken();
 
-    this.oktaAuth.getAccessToken().then((token) => {
-      const header = (token) ? {Authorization: `Bearer ${token}`} : undefined;
+    if (token) {
+      const header = {Authorization: `Bearer ${token}`};
 
       const request = this.http.request(method, baseUrl + route, {
         body: data,
@@ -31,7 +32,7 @@ export class ServerService {
       });
 
       request.subscribe(subject);
-    });
+    }
 
     return subject;
   }
@@ -39,7 +40,9 @@ export class ServerService {
   get(route: string, data?: any) {
     const subject = new Subject<any>();
 
-    this.oktaAuth.getAccessToken().then((token) => {
+    const token = this.oktaAuth.getAccessToken();
+
+    if (token) {
       const header = (token) ? {Authorization: `Bearer ${token}`} : undefined;
 
       let params = new HttpParams();
@@ -56,7 +59,7 @@ export class ServerService {
       });
 
       request.subscribe(subject);
-    });
+    }
 
     return subject;
   }
